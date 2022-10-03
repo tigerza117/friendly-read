@@ -1,8 +1,6 @@
-use std::borrow::{Borrow, BorrowMut};
+use std::borrow::BorrowMut;
 
 use crate::{client, model};
-
-//let re = Regex::new(r"(https://(.*?)\.niceoppai\.net)/(.*?)$");
 
 #[allow(dead_code)]
 pub async fn get_manga_list(page: i64) -> Vec<model::Manga> {
