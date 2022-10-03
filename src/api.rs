@@ -25,7 +25,7 @@ pub async fn view(query: web::Query<HashMap<String, String>>) -> impl Responder 
         Some(manga_name) => {
             let link = [BASE_URL, manga_name].join("/");
             match puller::get_manga_info(link.as_str()).await {
-                Some(mut manga_info) => {
+                Some(manga_info) => {
                     let mut res = Res {
                         manga: manga_info.to_owned(),
                         pages: vec![],
