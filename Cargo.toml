@@ -1,0 +1,29 @@
+[package]
+name = "niceoppai-scraping"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+reqwest = {version = "0.11", features = ["blocking", "json", "cookie_store", "cookie_crate", "cookies", "stream"]}
+scraper = "0.13.0"
+lazy_static = "1.4.0"
+dotenv="0.15.0"
+chrono = "0.4.19"
+env_logger = "0.9.1"
+log = "0.4.14"
+randua = "0.1.0"
+regex = "1.5.4"
+serde= {version = "1.0.125", features = ["derive"]}
+serde_json = "1.0.64"
+actix-web = {version= "4.2.1", features = ["openssl", "secure-cookies"]}
+tracing-actix-web = "0.6"
+tracing = "0.1"
+awc = { version = "3", features = ["rustls"] }
+url = "2.2"
+clap = { version = "3", features = ["derive"] }
+rustls  = "0.20.6"
+openssl = "0.10.35"
+webpki-roots = "0.22.5"
+actix-cors = "0.6.3"

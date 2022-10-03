@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn {
+    @apply text-base font-medium rounded-lg p-3;
+}
+
+.btn--primary {
+    @apply bg-sky-500 text-white;
+}
+
+.btn--secondary {
+    @apply bg-slate-100 text-slate-900;
+}
+
+.input {
+    @apply focus:ring-2 focus:ring-blue-500 focus:outline-none appearance-none w-full text-sm leading-6 text-slate-900 placeholder-slate-400 rounded-md py-2 pl-4 ring-1 ring-slate-200 shadow-sm;
+}
