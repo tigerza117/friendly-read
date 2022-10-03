@@ -38,10 +38,7 @@ pub async fn view(query: web::Query<HashMap<String, String>>) -> impl Responder 
                             .content_type(ContentType::json())
                             .body(json);
                     }
-                    let mut ep = &mut model::MangaEp {
-                        name: "".to_string(),
-                        ep_path: "".to_string(),
-                    };
+                    let ep_path;
                     match query.get("ep") {
                         Some(var) => {
                             let index = manga_info
@@ -50,19 +47,18 @@ pub async fn view(query: web::Query<HashMap<String, String>>) -> impl Responder 
                                 .position(|e| e.ep_path == String::from(var));
                             match index {
                                 Some(index) => {
-                                    ep = &mut manga_info.eps[index];
+                                    ep_path = manga_info.eps[index].ep_path.as_str();
                                 }
                                 None => {
-                                    ep = &mut manga_info.eps[0];
+                                    ep_path = manga_info.eps[0].ep_path.as_str();
                                 }
                             }
                         }
-                        _ => ep = &mut manga_info.eps[0],
+                        _ => ep_path = manga_info.eps[0].ep_path.as_str(),
                     }
 
                     let page_list =
-                        puller::get_pages([link.as_str(), ep.ep_path.as_str()].join("/").as_str())
-                            .await;
+                        puller::get_pages([link.as_str(), ep_path].join("/").as_str()).await;
 
                     res.pages = page_list;
 
