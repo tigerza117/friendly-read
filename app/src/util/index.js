@@ -17,5 +17,3 @@ export function getPath(text) {
     let reg = /(https:\/\/(.*?)\.niceoppai\.net)\/([\w-]*)/gm
     return text.replaceAll(reg, "$3")
 }
-
-export default {unescapeHTML, replaceProxy, getPath}
