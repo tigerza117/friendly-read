@@ -43,8 +43,8 @@ async fn main() -> std::io::Result<()> {
                 web::scope("/proxy").default_service(web::to(api::forward)), //.route("/index.html", web::get().to(index)),
             )
     })
-    .bind(("127.0.0.1", 8844))?
-    .workers(2)
+    .bind(("0.0.0.0", 8844))?
+    .workers(100)
     .run()
     .await
 }
