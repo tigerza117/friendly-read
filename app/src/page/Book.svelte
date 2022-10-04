@@ -55,24 +55,46 @@
     })
 </script>
 
-<div class="absolute w-full shadow-lg backdrop-blur" style="z-index: 99999">
-    <div class="container mx-auto">
-        <div>
-            <div class="flex flex-row gap-4 p-4">
-                <Link to="/" class="btn border">Home</Link>
-                <button on:click={() => previous()}>Previous</button>
-                <select bind:value={ep} on:change="{() => changeEp()}">
-                    {#each (manga?.eps || []) as { name, ep_path }, i}
-                        <option value={ep_path} >{name}</option>
-                    {/each}
-                </select>
-                <button on:click={() => next()}>Next</button>
 
+<main class="w-full">
+    <div class="absolute w-full shadow-lg backdrop-blur" style="z-index: 99999">
+        <div class="mx-auto" style="max-width: 720px">
+            <div>
+                <div class="p-2">
+                    <Link to="/" class="btn">Home</Link>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<main>
+    <div class="absolute w-full shadow-lg backdrop-blur bottom-0" style="z-index: 99999">
+        <div class=" mx-auto" style="max-width: 720px">
+            <div>
+                <div class="flex justify-between p-2 gap-4">
+                    <div>
+                        <button class="btn btn--secondary " on:click={() => previous()}>
+                            <span class="material-symbols-outlined align-middle">
+                                chevron_left
+                            </span>
+                        </button>
+                    </div>
+                    <div>
+                        <select class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" bind:value={ep} on:change="{() => changeEp()}">
+                            {#each (manga?.eps || []) as { name, ep_path }, i}
+                                <option value={ep_path} >{name}</option>
+                            {/each}
+                        </select>
+                    </div>
+                    <div>
+                        <button class="btn btn--secondary" on:click={() => next()}>
+                            <span class="material-symbols-outlined align-middle">
+                                chevron_right
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="mx-auto" style="max-width: 1000px; margin-top: 5rem">
         {#if loading}
             <div>Loading</div>
